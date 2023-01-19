@@ -1,0 +1,45 @@
+<div class="main posts-show">
+  <div class="container">
+    <div class="posts-show-item">
+      <div class="post-user-name">
+      <!-- ユーザーの画像が表示されるように、以下のsrcの中を埋めてください -->
+      <img src="<%= "/user_images/#{@user.image_name}" %>">
+      
+      <!-- link_toメソッドを用いて、ユーザー詳細ページへのリンクを作成してください -->
+      <%= link_to(@user.name, "/users/#{@user.id}") %>
+      </div>
+      <p>
+        <%= @post.content %>
+      </p>
+
+      <!-- 投稿画像を表示 -->
+      <% if @post.image_name %>
+      <img src="<%="/post_images/#{@post.image_name}"%>">
+      <% end %>
+
+      <div class="post-time">
+        <!-- @postのcreated_atカラムのデータを表示してください -->
+        <%= @post.created_at %>
+      </div>
+
+      <% if Like.find_by(user_id:@current_user.id, post_id:@post.id) %>
+      <%= link_to("/likes/#{@post.id}/destroy", data: {"turbo-method": :post}) do %>
+        <span class="fa fa-heart liked-btn"></span>
+      <% end %>
+      <% else %>
+      <%= link_to("/likes/#{@post.id}/create", data: {"turbo-method": :post}) do %>
+        <span class="fa fa-heart unliked-btn"></span>
+      <% end %>
+      <% end %>
+
+      <%= @likes_count %>
+
+      <% if @post.user_id == @current_user.id %>
+      <div class="post-menus">
+        <%= link_to("編集", "/posts/#{@post.id}/edit") %>
+        <%= link_to("削除", "/posts/#{@post.id}/destroy", data: { "turbo-method": :post }) %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
