@@ -34,6 +34,10 @@
           <% if post.image_name %>
           <img src="<%= "/post_images/#{post.image_name}" %>">
           <% end %>
+
+          <!--コメント機能-->
+          <p class="caption"><%= "#{post.comments.count} コメント" %></p>  <!--この行を追記-->
+
           </div>
 
         </div>

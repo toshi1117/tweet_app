@@ -82,7 +82,25 @@ class UsersController < ApplicationController
 
   def likes
     @user = User.find_by(id: params[:id])
-    @likes = Like.where(user_id: @user.id)
+    @likes = Like.where(user_id: @user.id).order(created_at: :desc)
+  end
+
+#フォローフォロワー機能のアクション
+  def follows
+    user = User.find(params[:id])
+    @users = user.following_user #.page(params[:page]).per(3).reverse_order
+  end
+
+  def followers
+    user = User.find(params[:id])
+    @users = user.follower_user #.page(params[:page]).per(3).reverse_order
+  end
+
+  def show
+    @user = User.find(params[:id])
+    #@posts = @user.posts.page(params[:page]).reverse_order
+    @following_users = @user.following_user
+    @follower_users = @user.follower_user
   end
 
 end

@@ -1,0 +1,25 @@
+<div class="main cover-user-index">
+  <div class="container">
+    <div class="row justify-content-center">
+      <h1 class="users-heading font-weight-normal mt-5 mb-5">フォロワー一覧</h1>
+    </div>
+
+    <!-- 以下の<% %>を使ってeach文を追加してください -->
+    <% @users.each do |user|%>
+      <div class="users-index-item">
+
+        <div class="user-left">
+          <!-- <img>タグを用いて、プロフィール画像を表示してください-->
+          <img src="<%="/user_images/#{user.image_name}" %>">
+        </div>
+
+        <div class="user-right">
+          <!-- 以下の<%= %>を使ってユーザー名を表示してください -->
+          <%= link_to(user.name,"/users/#{user.id}") %>
+          <p class="caption"><%= "#{user.posts.count} 投稿" %></p>
+        </div>
+      </div>
+    <!-- 以下の<% %>を使ってeach文のendを追加してください -->
+    <% end %>
+  </div>
+</div>

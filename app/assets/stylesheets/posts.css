@@ -107,3 +107,8 @@
   font-size: 16px;
   margin-right: 3px;
 }
+
+.caption {
+  font-size: small;
+  float: right;
+}

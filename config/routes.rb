@@ -1,4 +1,38 @@
 Rails.application.routes.draw do
+
+  get 'users/index'
+  get 'signup' => 'users#new'
+  post 'users/create' => 'users#create'
+  get 'users/:id/edit' => 'users#edit'
+  post 'users/:id/update' => 'users#update'
+
+  get 'login' => 'users#login_form'
+  post 'login' => 'users#login'
+  post 'logout' => 'users#logout'
+
+  post 'likes/:post_id/create' => 'likes#create'
+  post 'likes/:post_id/destroy' => 'likes#destroy'
+  get 'users/:id/likes' => 'users#likes'
+
+  get 'posts/index' => 'posts#index'
+
+  #投稿検索機能のルーティング
+  get 'posts/search' => 'posts#search'
+  
+  #コメント機能
+  resources :posts do
+    resources :comments, only:[:create, :destroy]
+  end
+
+  #フォローフォロワー機能
+  resources :users, only:[:index, :show, :edit, :update] do
+    member do
+      get :follows, :followers
+    end
+    resource :relationships, only: [:create, :destroy]
+  end
+
+
   get 'users/index'
   get 'signup' => 'users#new'
   post 'users/create' => 'users#create'
@@ -21,6 +55,10 @@ Rails.application.routes.draw do
   get 'posts/:id/edit' => 'posts#edit'
   post 'posts/:id/update' => 'posts#update'
   post 'posts/:id/destroy' => 'posts#destroy'
+  #投稿検索機能のルーティング
+  get 'posts/search' => 'posts#search'
+
+
   get 'posts/:id' => 'posts#show'
   get '/' => 'home#top'
 

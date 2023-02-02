@@ -26,6 +26,13 @@
           <li>
             <%= link_to(@current_user.name, "/users/#{@current_user.id}") %>
           </li>
+      <!-- 投稿検索機能のフォーム -->
+          <li>
+            <%= form_tag("/posts/search", method: :get) do %>
+              <input type="search" name="keyword"> 
+              <input type="submit" value="投稿を検索">
+            <% end %>
+          </li>
           <li>
             <%= link_to("投稿一覧", "/posts/index") %>
           </li>

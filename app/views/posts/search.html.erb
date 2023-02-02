@@ -1,9 +1,7 @@
 
-
-
-
 <div class="main posts-index">
   <div class="container">
+    <div>検索結果 "<%= @keyword %>" </div>
     <% @posts.each do |post| %>
       <div class="posts-index-item">
         <div class="post-left">
@@ -24,8 +22,7 @@
         <% end %>
 
         <!--コメント機能-->
-        <p class="caption"><%= "#{post.comments.count} コメント" %></p>  <!--この行を追記-->
-        
+        <p class="caption"><%= "#{post.comments.count} コメント" %></p>
 
       </div>
     
