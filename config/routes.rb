@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-root 'posts#index'
+#root 'posts#index' ログインしていないと表示されないページ
+root 'users#login_form'
 
   get 'users/index'
   get 'signup' => 'users#new'
