@@ -23,14 +23,14 @@
    # <<: *default
     #database: db/production.sqlite3
 
-#default: &default
- # adapter: postgresql
-  #encoding: utf8
-  #pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  #username: toshi
-  #password: toshi1996
-  #host: localhost
-  #timeout: 5000
+default: &default
+  adapter: postgresql
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: toshi
+  password: toshi1996
+  host: localhost
+  timeout: 5000
 
 #development:
  # <<: *default
