@@ -57,4 +57,4 @@ username: toshi
 
   production:
   <<: *default
-      url: <%= ENV[' postgres://pvcvrvconpoegm'] %>
+      url: <%= ENV[' postgres://pvcvrvconpoegm:4be7089d1ac2723c6ba73570a2add6a1a9be3cbc35454211f3826ec72238dbbd@ec2-23-20-224-166.compute-1.amazonaws.com:5432/dcjhud1u4epkg9'] %>
