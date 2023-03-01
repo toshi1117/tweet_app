@@ -52,10 +52,10 @@
   #database: tweet_app_production
 
 #本番（開発）環境
-production:
-  <<: *default
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
+  production:
+    <<: *default
+    adapter: postgresql
+    encoding: unicode
+    pool: 5
   
   
